@@ -1,7 +1,8 @@
 import React from 'react';
 import type { FormProps } from 'antd';
-import { Button, Form } from 'antd';
+import { Form } from 'antd';
 import InputPlace from './components/input';
+import SignButton from './components/button';
 
 type FieldType = {
   login?: string;
@@ -45,11 +46,10 @@ const FormSignIn: React.FC = () => (
 />
     </Form.Item>
 
-    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-      <Button type="primary" htmlType="submit">
-        Sign in
-      </Button>
-    </Form.Item>
+    <SignButton
+    label="Sign in">
+        
+      </SignButton>
   </Form>
 );
 
