@@ -19,8 +19,7 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
 const FormSignIn: React.FC = () => (
   <Form
     name="basic"
-    labelCol={{ span: 8 }}
-    wrapperCol={{ span: 16 }}
+    layout='vertical'
     style={{ maxWidth: 600 }}
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}

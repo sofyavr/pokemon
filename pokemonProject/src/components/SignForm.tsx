@@ -1,6 +1,7 @@
 import React from 'react';
 import type { FormProps } from 'antd';
-import { Button, Form, Input } from 'antd';
+import { Button, Form } from 'antd';
+import InputPlace from '../components/input';
 
 type FieldType = {
   login?: string;
@@ -18,8 +19,7 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
 const FormSignIn: React.FC = () => (
   <Form
     name="basic"
-    labelCol={{ span: 8 }}
-    wrapperCol={{ span: 16 }}
+    layout='vertical'
     style={{ maxWidth: 600 }}
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
@@ -30,9 +30,9 @@ const FormSignIn: React.FC = () => (
       name="login"
       rules={[{ required: true, message: 'Please input your login!' }]}
     >
-      <Input 
-            placeholder="Input login"
-/>
+      <InputPlace 
+        text="Input login"
+      />
     </Form.Item>
 
     <Form.Item<FieldType>
@@ -40,8 +40,8 @@ const FormSignIn: React.FC = () => (
       name="password"
       rules={[{ required: true, message: 'Please input your password!' }]}
     >
-      <Input.Password 
-            placeholder="Input password"
+      <InputPlace 
+            text="Input password"
 />
     </Form.Item>
 
