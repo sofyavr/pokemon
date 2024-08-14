@@ -3,6 +3,7 @@ import type { FormProps } from 'antd';
 import { Form } from 'antd';
 import InputPlace from './components/input';
 import SignButton from './components/button';
+import InputPass from './components/inputPassword';
 
 type FieldType = {
   login?: string;
@@ -41,7 +42,7 @@ const FormSignIn: React.FC = () => (
       name="password"
       rules={[{ required: true, message: 'Please input your password!' }]}
     >
-      <InputPlace 
+      <InputPass
             text="Input password"
 />
     </Form.Item>
