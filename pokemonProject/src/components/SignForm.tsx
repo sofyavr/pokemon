@@ -1,7 +1,7 @@
 import React from 'react';
 import type { FormProps } from 'antd';
-import { Button, Form } from 'antd';
-import InputPlace from '../components/input';
+import { Form, Input } from 'antd';
+import SignButton from '../components/button';
 
 type FieldType = {
   login?: string;
@@ -16,11 +16,11 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
 
-const FormSignIn: React.FC = () => (
+const FormSignIn: React.FC = () => {
+  return (
   <Form
     name="basic"
-    labelCol={{ span: 8 }}
-    wrapperCol={{ span: 16 }}
+    layout='vertical'
     style={{ maxWidth: 600 }}
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
@@ -31,8 +31,8 @@ const FormSignIn: React.FC = () => (
       name="login"
       rules={[{ required: true, message: 'Please input your login!' }]}
     >
-      <InputPlace 
-        text="Input login"
+      <Input
+      placeholder='Input login'
       />
     </Form.Item>
 
@@ -41,17 +41,17 @@ const FormSignIn: React.FC = () => (
       name="password"
       rules={[{ required: true, message: 'Please input your password!' }]}
     >
-      <InputPlace 
-            text="Input password"
+      <Input.Password
+      placeholder='Input password'
 />
     </Form.Item>
 
-    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-      <Button type="primary" htmlType="submit">
-        Sign in
-      </Button>
-    </Form.Item>
+    <SignButton
+    label="Sign in">
+        
+      </SignButton>
   </Form>
-);
+  );
+};
 
 export default FormSignIn;

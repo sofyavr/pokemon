@@ -1,57 +1,30 @@
 import React from 'react';
-import type { FormProps } from 'antd';
-import { Form } from 'antd';
-import InputPlace from './components/input';
-import SignButton from './components/button';
-import InputPass from './components/inputPassword';
+import FormSignIn from './components/SignForm';
+import { Tabs } from 'antd';
+import type { TabsProps } from 'antd';
 
-type FieldType = {
-  login?: string;
-  password?: string;
+const onChange = (key: string) => {
+  console.log(key);
 };
 
-const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-  console.log('Success:', values);
-};
+const items: TabsProps['items'] = [
+  {
+    key: '1',
+    label: 'Tab 1',
+    children: <FormSignIn/>,
+  },
+  {
+    key: '2',
+    label: 'Tab 2',
+    children: 'Content of Tab Pane 2',
+  },
+  {
+    key: '3',
+    label: 'Tab 3',
+    children: 'Content of Tab Pane 3',
+  },
+];
 
-const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
-  console.log('Failed:', errorInfo);
-};
+const App: React.FC = () => <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
+export default App;
 
-const FormSignIn: React.FC = () => (
-  <Form
-    name="basic"
-    layout='vertical'
-    style={{ maxWidth: 600 }}
-    onFinish={onFinish}
-    onFinishFailed={onFinishFailed}
-    autoComplete="off"
-  >
-    <Form.Item<FieldType>
-      label="Login"
-      name="login"
-      rules={[{ required: true, message: 'Please input your login!' }]}
-    >
-      <InputPlace 
-        text="Input login"
-      />
-    </Form.Item>
-
-    <Form.Item<FieldType>
-      label="Password"
-      name="password"
-      rules={[{ required: true, message: 'Please input your password!' }]}
-    >
-      <InputPass
-            text="Input password"
-/>
-    </Form.Item>
-
-    <SignButton
-    label="Sign in">
-        
-      </SignButton>
-  </Form>
-);
-
-export default FormSignIn;
