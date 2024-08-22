@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card } from 'antd';
+import { Card, Flex } from 'antd';
 import FormSignIn from './components/SignForm';
 import FormSignUp from './components/SignFormUp';
 
@@ -27,9 +27,10 @@ const App: React.FC = () => {
   };
 
   return (
-    <>
+    <Flex gap="middle" align='start' vertical justify='center'>
+
       <Card
-        style={{ width: '100%' }}
+        style={{ width: '400px',}}
         tabList={tabListNoTitle}
         activeTabKey={activeTabKey2}
         onTabChange={onTab2Change}
@@ -39,37 +40,11 @@ const App: React.FC = () => {
       >
         {contentListNoTitle[activeTabKey2]}
       </Card>
-    </>
+      </Flex>
   );
 };
 
 export default App;
 
 
-
-// import React from 'react';
-// import FormSignIn from './components/SignForm';
-// import FormSignUp from './components/SignFormUp';
-// import { Tabs } from 'antd';
-// import type { TabsProps } from 'antd';
-
-// const onChange = (key: string) => {
-//   console.log(key);
-// };
-
-// const items: TabsProps['items'] = [
-//   {
-//     key: '1',
-//     label: 'Sign up',
-//     children: <FormSignUp/>,
-//   },
-//   {
-//     key: '2',
-//     label: 'Sign in',
-//     children: <FormSignIn/>,
-//   }
-// ];
-
-// const App: React.FC = () => <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
-// export default App;
 
