@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Card, Flex } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { Card, Flex } from 'antd'; 
 import FormSignIn from './components/SignForm';
 import FormSignUp from './components/SignFormUp';
 
@@ -19,24 +20,37 @@ const tabListNoTitle = [
   }
 ];
 
-
 const contentListNoTitle: Record<AuthTab, React.ReactNode> = {
-  [AuthTab.SignUp]: <FormSignUp/>,
-  [AuthTab.SignIn]: <FormSignIn/>,
+  [AuthTab.SignUp]: <FormSignUp />,
+  [AuthTab.SignIn]: <FormSignIn />,
 };
 
 const App: React.FC = () => {
-  const [activeTabKey2, setActiveTabKey2] = useState<AuthTab>(AuthTab.SignUp);
+  const location = useLocation();
+  const [activeTabKey2, setActiveTabKey2] = useState<AuthTab>(AuthTab.SignIn);
+
+  useEffect(() => {
+    if (location.pathname === '/signup') {
+      setActiveTabKey2(AuthTab.SignUp);
+    } else if (location.pathname === '/signin') {
+      setActiveTabKey2(AuthTab.SignIn);
+    }
+  }, [location.pathname]);
 
   const onTab2Change = (key: string) => {
     setActiveTabKey2(key as AuthTab);
+    
+    if (key === AuthTab.SignUp) {
+      window.history.pushState({}, '', '/signup');
+    } else {
+      window.history.pushState({}, '', '/signin');
+    }
   };
 
   return (
-    <Flex align='center'  justify='center' style={{height:'100vh', width:'100vw', placeItems: 'center',}} >
-
+    <Flex align='center' justify='center' style={{ height: '100vh', width: '100vw', placeItems: 'center' }}>
       <Card
-        style={{ width: '400px', display:'flex', justifyContent:'center', flexDirection:'column', alignItems:'center'}}
+        style={{ width: '400px', display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}
         tabList={tabListNoTitle}
         activeTabKey={activeTabKey2}
         onTabChange={onTab2Change}
@@ -46,11 +60,18 @@ const App: React.FC = () => {
       >
         {contentListNoTitle[activeTabKey2]}
       </Card>
-      </Flex>
+    </Flex>
   );
 };
 
-export default App;
+const MainApp = () => (
+  <Router>
+    <Routes>
+      <Route path="/signup" element={<App />} />
+      <Route path="/signin" element={<App />} />
+      <Route path="/" element={<App />} /> 
+    </Routes>
+  </Router>
+);
 
-
-
+export default MainApp;
