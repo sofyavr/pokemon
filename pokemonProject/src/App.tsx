@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 import { Card, Flex } from 'antd'; 
 import FormSignIn from './components/SignForm';
 import FormSignUp from './components/SignFormUp';
+import { Counter } from './features/counter/counter';
 
 enum AuthTab {
   SignIn = 'SignIn',
@@ -60,6 +61,7 @@ const App: React.FC = () => {
       >
         {contentListNoTitle[activeTabKey2]}
       </Card>
+      <Counter />
     </Flex>
   );
 };
