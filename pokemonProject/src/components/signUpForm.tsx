@@ -4,7 +4,7 @@ import {
   Form,
   Input,
 } from 'antd';
-import SignButton from '../components/button';
+import SignButton from './button';
 
 
 const App: React.FC = () => {

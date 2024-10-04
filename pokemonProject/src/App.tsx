@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { Card, Flex } from 'antd'; 
-import FormSignIn from './components/SignForm';
-import FormSignUp from './components/SignFormUp';
-import { Counter } from './features/counter/counter';
+import FormSignIn from './components/signInForm';
+import FormSignUp from './components/signUpForm';
+import PokemonPage from './components/pokemonPage';
+// import { Counter } from './features/counter/counter';
 
 enum AuthTab {
   SignIn = 'SignIn',
@@ -61,7 +62,7 @@ const App: React.FC = () => {
       >
         {contentListNoTitle[activeTabKey2]}
       </Card>
-      <Counter />
+      {/* <Counter /> */}
     </Flex>
   );
 };
@@ -71,7 +72,7 @@ const MainApp = () => (
     <Routes>
       <Route path="/signup" element={<App />} />
       <Route path="/signin" element={<App />} />
-      <Route path="/" element={<App />} /> 
+      <Route path="/" element={<PokemonPage />} /> 
     </Routes>
   </Router>
 );
