@@ -4,7 +4,6 @@ import { Card, Flex } from 'antd';
 import FormSignIn from './components/signInForm';
 import FormSignUp from './components/signUpForm';
 import PokemonPage from './components/pokemonPage';
-// import { Counter } from './features/counter/counter';
 
 enum AuthTab {
   SignIn = 'SignIn',
@@ -62,7 +61,6 @@ const App: React.FC = () => {
       >
         {contentListNoTitle[activeTabKey2]}
       </Card>
-      {/* <Counter /> */}
     </Flex>
   );
 };

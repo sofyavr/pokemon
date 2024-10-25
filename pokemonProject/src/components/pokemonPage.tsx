@@ -2,6 +2,7 @@ import React from 'react';
 import { Flex, Layout } from 'antd';
 import './pokemon.css'
 import ContentPokemons from './contentPokemons';
+import { Counter } from '../features/counter/counter';
 
 const { Header, Sider, Content } = Layout;
 
@@ -14,10 +15,7 @@ const PokemonPage: React.FC = () => (
             <hr style={{color: 'rgba(239, 239, 239, 1)', height:'54px', width:'2px', border:'1px solid rgba(239, 239, 239, 1)' }}/>
             <img src="../img/clicker.png" alt="pokemon" style={{height:'54px', width:'149px', }}/>
         </div>
-        <div className='headerLogoStyle'>
-            <img src="../img/coin.png" alt="coin" style={{height:'32px', width:'32px', marginRight:'5px', justifyContent:'flex-end'}}/>
-            <span className='YellowTextStyle'>100000000</span> 
-        </div>
+        <Counter />
       </Header>
       <Layout>
         <Sider width="25%" className="siderStyle" style={{backgroundColor:'#ffff'}}>

@@ -2,7 +2,10 @@ import type { CSSProperties } from 'react';
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { CollapseProps } from 'antd';
-import { Collapse, theme } from 'antd';
+import { Collapse,  } from 'antd';
+import { Pokemon } from './getPokemons'
+
+const pokemon = ['clefairy', 'pikachu', 'ditto', 'bulbasaur']
 
 const text = `
   A dog is a type of domesticated animal.
@@ -14,7 +17,13 @@ const getItems: (panelStyle: CSSProperties) => CollapseProps['items'] = (panelSt
   {
     key: '1',
     label: <span className='YellowTextStyle' style={{marginLeft:'20px'}}>My Pokemons</span>,
-    children: <p>{text}</p>,
+    children: <p>
+              <div>
+        {pokemon.map((poke, index) => (
+          <Pokemon key={index} name={poke} pollingInterval={0} />
+        ))}
+      </div>
+    </p>,
     style: panelStyle,
   },
   {
@@ -32,11 +41,11 @@ const getItems: (panelStyle: CSSProperties) => CollapseProps['items'] = (panelSt
 ];
 
 const ContentPokemons: React.FC = () => {
-  const { token } = theme.useToken();
+
 
   const panelStyle: React.CSSProperties = {
     marginBottom: 24,
-    borderRadius: token.borderRadiusLG,
+    borderRadius: '16px',
     border: 'none',
     backgroundColor:'#ffff',
     boxShadow: '0px 0px 16px 0px rgba(58, 58, 58, 0.1)',
