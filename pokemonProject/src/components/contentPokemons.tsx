@@ -5,7 +5,7 @@ import type { CollapseProps } from 'antd';
 import { Collapse,  } from 'antd';
 import { Pokemon } from './getPokemons'
 
-const pokemon = ['clefairy', 'pikachu', 'ditto', 'bulbasaur']
+const pokemon = ['clefairy', 'pikachu', 'ditto', 'bulbasaur', 'bulbasaur']
 
 const text = `
   A dog is a type of domesticated animal.
@@ -16,25 +16,24 @@ const text = `
 const getItems: (panelStyle: CSSProperties) => CollapseProps['items'] = (panelStyle) => [
   {
     key: '1',
-    label: <span className='YellowTextStyle' style={{marginLeft:'20px'}}>My Pokemons</span>,
-    children: <p>
-              <div>
-        {pokemon.map((poke, index) => (
-          <Pokemon key={index} name={poke} pollingInterval={0} />
-        ))}
-      </div>
-    </p>,
+    label: <span className='YellowTextStyle' >My Pokemons</span>,
+    children: 
+            <div style={{}}>
+                {pokemon.map((poke, index) => (
+                <Pokemon key={index} name={poke} pollingInterval={0} />
+                ))}
+            </div>,
     style: panelStyle,
   },
   {
     key: '2',
-    label: <span className='YellowTextStyle' style={{marginLeft:'20px'}}>Garden</span>,
+    label: <span className='YellowTextStyle' >Garden</span>,
     children: <p>{text}</p>,
     style: panelStyle,
   },
   {
     key: '3',
-    label: <span className='YellowTextStyle' style={{marginLeft:'20px', }}>Hunt</span>,
+    label: <span className='YellowTextStyle' >Hunt</span>,
     children: <p>{text}</p>,
     style: panelStyle,
   },
@@ -56,9 +55,9 @@ const ContentPokemons: React.FC = () => {
     <Collapse
       bordered={false}
       defaultActiveKey={['1']}
-      expandIcon={({ isActive }) => <DownOutlined rotate={isActive ? 180 : 0} style={{color:' rgba(54, 95, 172, 1)', width:'16px', height:'10px', marginTop:'17px'}}/>}
+      expandIcon={({ isActive }) => <DownOutlined rotate={isActive ? 180 : 0} style={{color:' rgba(54, 95, 172, 1)', width:'16px', height:'10px', marginTop:'17px', }}/>}
       expandIconPosition='end'
-      style={{ background: '#0000' }}
+      style={{ background: '#0000',  }}
       items={getItems(panelStyle)}
     />
   );

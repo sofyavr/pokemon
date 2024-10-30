@@ -25,9 +25,6 @@
     background-Color: #0000;
     margin: 10px;
     border-radius: 16px; 
-    justify-content: space-between; 
-    align-items: flex-start;
-    width: 100; 
     line-Height: 70px;
   }
   
@@ -39,12 +36,22 @@
     display: flex;
     justify-content: space-between; 
     align-items: flex-start;
-    width: 100; 
-    line-Height: 70px;
+    line-Height: 55px;
   }
   
   .layoutStyle {
     border-Radius: 8;
     overflow: hidden;
     width: 100%;
+  }
+
+  .pokemonCard {
+    width: 165px;
+    height: 247px;
+    gap: 8px;
+    border-radius: 16px;
+    opacity: 0px;
+    box-shadow: 0px 0px 16px 0px rgba(58, 58, 58, 0.1);
+    margin-right: 20px;
+    margin-top: 20px;
   }

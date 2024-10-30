@@ -18,15 +18,15 @@ const PokemonPage: React.FC = () => (
         <Counter />
       </Header>
       <Layout>
-        <Sider width="25%" className="siderStyle" style={{backgroundColor:'#ffff'}}>
-        <span className='YellowTextStyle' style={{marginLeft:'20px', }}>Inventory</span> 
+        <Sider width="20%" className="siderStyle" style={{backgroundColor:'#ffff'}}>
+        <span className='YellowTextStyle' style={{marginLeft:'15px', }}>Inventory</span> 
 
         </Sider>
         <Content className="contentStyle" >
         <ContentPokemons/>
         </Content>
-        <Sider width="25%" className="siderStyle" style={{backgroundColor:'#ffff'}}>
-        <span className='YellowTextStyle' style={{marginLeft:'20px'}}>Shop</span> 
+        <Sider width="20%" className="siderStyle" style={{backgroundColor:'#ffff'}}>
+        <span className='YellowTextStyle' style={{marginLeft:'15px', }}>Shop</span> 
         </Sider>
       </Layout>
     </Layout>
