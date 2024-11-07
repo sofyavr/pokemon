@@ -3,6 +3,7 @@ import { Flex, Layout } from 'antd';
 import './pokemon.css'
 import ContentPokemons from './contentPokemons';
 import { Counter } from '../features/counter/counter';
+import ShopItems from './contentShop';
 
 const { Header, Sider, Content } = Layout;
 
@@ -20,13 +21,13 @@ const PokemonPage: React.FC = () => (
       <Layout>
         <Sider width="20%" className="siderStyle" style={{backgroundColor:'#ffff'}}>
         <span className='YellowTextStyle' style={{marginLeft:'15px', }}>Inventory</span> 
-
         </Sider>
         <Content className="contentStyle" >
         <ContentPokemons/>
         </Content>
         <Sider width="20%" className="siderStyle" style={{backgroundColor:'#ffff'}}>
         <span className='YellowTextStyle' style={{marginLeft:'15px', }}>Shop</span> 
+        <ShopItems/>
         </Sider>
       </Layout>
     </Layout>
