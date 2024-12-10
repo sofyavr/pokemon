@@ -1,12 +1,12 @@
 import  { FC } from "react";
 import { IArray } from "../models/IArray";
 
-interface ItemItemProps{
+interface OneItemProps{
     key: string;
     item: IArray;
 }
 
-const ItemItem: FC<ItemItemProps> = ({item}) => {
+const OneItem: FC<OneItemProps> = ({item}) => {
     return (
         <div style={{color:"black"}}>
         {item.name}
@@ -14,4 +14,5 @@ const ItemItem: FC<ItemItemProps> = ({item}) => {
     );
 };
 
-export default ItemItem;
+export default OneItem;
+
