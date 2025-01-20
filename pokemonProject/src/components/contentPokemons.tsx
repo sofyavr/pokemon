@@ -18,7 +18,7 @@ const getItems: (panelStyle: CSSProperties) => CollapseProps['items'] = (panelSt
     key: '1',
     label: <span className='YellowTextStyle' >My Pokemons</span>,
     children: 
-            <div style={{}}>
+            <div>
                 {pokemon.map((poke, index) => (
                 <Pokemon key={index} name={poke} pollingInterval={1} />
                 ))}
@@ -55,7 +55,7 @@ const ContentPokemons: React.FC = () => {
     <Collapse
       bordered={false}
       defaultActiveKey={['1']}
-      expandIcon={({ isActive }) => <DownOutlined rotate={isActive ? 180 : 0} style={{color:' rgba(54, 95, 172, 1)', width:'16px', height:'10px', marginTop:'17px', }}/>}
+      expandIcon={({ isActive }) => <DownOutlined rotate={isActive ? 180 : 0} className='DownOutlined'/>}
       expandIconPosition='end'
       style={{ background: '#0000',  }}
       items={getItems(panelStyle)}

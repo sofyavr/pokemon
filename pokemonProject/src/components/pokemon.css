@@ -100,3 +100,26 @@
 .button:hover {
     background-color: darkblue; /* Цвет кнопки при наведении */
 }
+
+.DownOutlined {
+  color:rgba(54, 95, 172, 1);
+   width:16px; 
+   height:10px; 
+   margin-top:17px;
+}
+
+.namePoke {
+  display: flex;
+  justify-content: space-between;
+}
+
+.SettingFilled {
+  stroke:rgba(54, 95, 172, 1);
+  color:rgba(255, 204, 1, 1);
+  stroke-width:70px;
+}
+
+.pokeImg {
+  width:100%;
+  margin-top:15px;
+}
