@@ -1,3 +1,38 @@
+import { itemApi } from "../services/allItems";
+import { ItemItem } from "./ItemItem";
+import './pokemon.css';
+
+const ItemContainer = () => {
+    // Получаем список всех айтемов
+    const { data: response } = itemApi.useGetAllItemsQuery('');
+
+    const itemName = response && response.results.length > 0 ? response.results[17].name : '';
+
+    // Получаем данные конкретного айтема по имени
+    const { data: itemid } = itemApi.useGetItemByNameQuery(itemName);
+    console.log(itemid);
+    return (
+        <div>
+            <div>
+                {/* Отображаем список айтемов, если они есть */}
+                {
+                    response && response.results.map((item) => (
+                        <ItemItem key={item.name} name={item.name} pollingInterval={0}/>
+                    ))
+                }
+
+                {/* Отображаем конкретный айтем, если он загружен */}
+                {
+                    itemid && (
+                        <ItemItem key={itemid.name} name={itemid.name} pollingInterval={0}/>
+                    )
+                }
+            </div>
+        </div>
+    );
+};
+
+export default ItemContainer;
 // import { itemApi } from "../services/allItems";
 // // import { IArray } from "../models/IArray";
 // import {ItemItem} from "./ItemItem";
@@ -107,39 +142,3 @@
 // };
 
 // export default ItemContainer;
-import { itemApi } from "../services/allItems";
-import { ItemItem } from "./ItemItem";
-import './pokemon.css';
-
-const ItemContainer = () => {
-    // Получаем список всех айтемов
-    const { data: response } = itemApi.useGetAllItemsQuery('');
-
-    // Проверяем, есть ли данные и есть ли хотя бы один айтем в списке
-    const itemName = response && response.results.length > 0 ? response.results[17].name : '';
-
-    // Получаем данные конкретного айтема по имени
-    const { data: itemid } = itemApi.useGetItemByNameQuery(itemName);
-    console.log(itemid);
-    return (
-        <div>
-            <div>
-                {/* Отображаем список айтемов, если они есть */}
-                {
-                    response && response.results.map((item) => (
-                        <ItemItem key={item.name} name={item.name} pollingInterval={0}/>
-                    ))
-                }
-
-                {/* Отображаем конкретный айтем, если он загружен */}
-                {
-                    itemid && (
-                        <ItemItem key={itemid.name} name={itemid.name} pollingInterval={0}/>
-                    )
-                }
-            </div>
-        </div>
-    );
-};
-
-export default ItemContainer;
