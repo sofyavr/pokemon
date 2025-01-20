@@ -109,19 +109,18 @@
 // export default ItemContainer;
 import { itemApi } from "../services/allItems";
 import { ItemItem } from "./ItemItem";
-import { Card } from 'antd';
 import './pokemon.css';
 
 const ItemContainer = () => {
     // Получаем список всех айтемов
     const { data: response } = itemApi.useGetAllItemsQuery('');
-    
+
     // Проверяем, есть ли данные и есть ли хотя бы один айтем в списке
-    const itemName = response && response.results.length > 0 ? response.results[0].name : '';
+    const itemName = response && response.results.length > 0 ? response.results[17].name : '';
 
     // Получаем данные конкретного айтема по имени
     const { data: itemid } = itemApi.useGetItemByNameQuery(itemName);
-
+    console.log(itemid);
     return (
         <div>
             <div>
@@ -135,15 +134,7 @@ const ItemContainer = () => {
                 {/* Отображаем конкретный айтем, если он загружен */}
                 {
                     itemid && (
-                        <Card className="itemCard">
-                            <div className="cardContent">
-                                {itemid.sprites && itemid.sprites.default && (
-                                    <img src={itemid.sprites.default} alt={itemid.name} className="photo" />
-                                )}
-                                <b className="title">{itemid.name}</b>
-                            </div>
-                            <button className="button">Кнопка</button>
-                        </Card>
+                        <ItemItem key={itemid.name} name={itemid.name} pollingInterval={0}/>
                     )
                 }
             </div>

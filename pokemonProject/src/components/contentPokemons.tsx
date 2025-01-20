@@ -20,7 +20,7 @@ const getItems: (panelStyle: CSSProperties) => CollapseProps['items'] = (panelSt
     children: 
             <div style={{}}>
                 {pokemon.map((poke, index) => (
-                <Pokemon key={index} name={poke} pollingInterval={0} />
+                <Pokemon key={index} name={poke} pollingInterval={1} />
                 ))}
             </div>,
     style: panelStyle,
