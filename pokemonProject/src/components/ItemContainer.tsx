@@ -1,38 +1,125 @@
+import { useState } from 'react';
 import { itemApi } from "../services/allItems";
+import { berryApi } from "../services/berry";
+import { BerryItem } from "./BerryItem";
 import { ItemItem } from "./ItemItem";
 import './pokemon.css';
 
 const ItemContainer = () => {
-    // Получаем список всех айтемов
     const { data: response } = itemApi.useGetAllItemsQuery('');
+    const { data: berryResponse } = berryApi.useGetAllBerriesQuery('');
 
-    const itemName = response && response.results.length > 0 ? response.results[17].name : '';
+    const [filters, setFilters] = useState<string[]>([]); 
 
-    // Получаем данные конкретного айтема по имени
-    const { data: itemid } = itemApi.useGetItemByNameQuery(itemName);
-    console.log(itemid);
+    const toggleFilter = (filter: string) => {
+        setFilters(prevFilters => 
+            prevFilters.includes(filter) 
+                ? prevFilters.filter(f => f !== filter) 
+                : [...prevFilters, filter]
+        );
+    };
+
+    const filteredItems = response ? response.results.filter(item => item.name.endsWith('-ball')) : [];
+    const filteredBerries = berryResponse ? berryResponse.results : [];
+
     return (
         <div>
-            <div>
-                {/* Отображаем список айтемов, если они есть */}
-                {
-                    response && response.results.map((item) => (
-                        <ItemItem key={item.name} name={item.name} pollingInterval={0}/>
-                    ))
-                }
+            <div className="filter-container">
+                <button 
+                    className={'filter-button'} 
+                    onClick={() => toggleFilter('balls')}
+                >
+                    Покеболы
+                </button>
+                <button 
+                    className={'filter-button'} 
+                    onClick={() => toggleFilter('berries')}
+                >
+                    Ягоды
+                </button>
+            </div>
 
-                {/* Отображаем конкретный айтем, если он загружен */}
-                {
-                    itemid && (
-                        <ItemItem key={itemid.name} name={itemid.name} pollingInterval={0}/>
-                    )
-                }
+            <div>
+                {filters.length === 0 ? (
+                    <>
+                        {response && response.results.map((item) => (
+                            <ItemItem key={item.name} name={item.name} pollingInterval={0} />
+                        ))}
+                        {berryResponse && berryResponse.results.map((item) => (
+                            <BerryItem key={item.name} name={item.name} pollingInterval={0} />
+                        ))}
+                    </>
+                ) : (
+                    <>
+                        {filters.includes('balls') && filteredItems.map((item) => (
+                            <ItemItem key={item.name} name={item.name} pollingInterval={0} />
+                        ))}
+                        {filters.includes('berries') && filteredBerries.map((item) => (
+                            <BerryItem key={item.name} name={item.name} pollingInterval={0} />
+                        ))}
+                    </>
+                )}
             </div>
         </div>
     );
 };
 
 export default ItemContainer;
+// import {  useState } from 'react';
+// import { itemApi } from "../services/allItems";
+// import { berryApi } from "../services/berry";
+// import { BerryItem } from "./BerryItem";
+// import { ItemItem } from "./ItemItem";
+// import './pokemon.css';
+
+// const ItemContainer = () => {
+//     const { data: response } = itemApi.useGetAllItemsQuery('');
+//     const { data: berryResponse } = berryApi.useGetAllBerriesQuery('');
+
+//     const [filters, setFilters] = useState<string[]>([]); 
+
+//     const toggleFilter = (filter: string) => {
+//         setFilters(prevFilters => 
+//             prevFilters.includes(filter) 
+//                 ? prevFilters.filter(f => f !== filter) 
+//                 : [...prevFilters, filter] 
+//         );
+//     };
+
+//     const filteredItems = response ? response.results.filter(item => item.name.endsWith('-ball')) : [];
+//     const filteredBerries = berryResponse ? berryResponse.results : [];
+
+//     return (
+//         <div>
+//             <div className='filter-container'>
+//                 <button className='filter-button' onClick={() => toggleFilter('balls')}>Покеболы</button>
+//                 <button className='filter-button' onClick={() => toggleFilter('berries')}>Ягоды</button>
+//                 <button className='filter-button' onClick={() => setFilters([])}>Сбросить фильтры</button> 
+//             </div>
+
+//             <div>
+//                 {filters.length === 0 && (
+//                     <>
+//                         {response && response.results.map((item) => (
+//                             <ItemItem key={item.name} name={item.name} pollingInterval={0} />
+//                         ))}
+//                         {berryResponse && berryResponse.results.map((item) => (
+//                             <BerryItem key={item.name} name={item.name} pollingInterval={0} />
+//                         ))}
+//                     </>
+//                 )}
+//                 {filters.includes('balls') && filteredItems.map((item) => (
+//                     <ItemItem key={item.name} name={item.name} pollingInterval={0} />
+//                 ))}
+//                 {filters.includes('berries') && filteredBerries.map((item) => (
+//                     <BerryItem key={item.name} name={item.name} pollingInterval={0} />
+//                 ))}
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default ItemContainer;
 // import { itemApi } from "../services/allItems";
 // // import { IArray } from "../models/IArray";
 // import {ItemItem} from "./ItemItem";

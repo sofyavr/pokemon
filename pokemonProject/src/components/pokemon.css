@@ -130,3 +130,26 @@
   margin-right:5px;
   justify-content:flex-end;
 }
+
+.filter-container {
+  display: flex;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.filter-button {
+  background-color: lightgray; 
+  border: 1px solid transparent; 
+  padding: 10px 15px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+}
+
+.filter-button:hover {
+  background-color: gray;
+}
+
+.filter-button.active {
+  background-color: darkgray; 
+  border-color: darkgray; 
+}
