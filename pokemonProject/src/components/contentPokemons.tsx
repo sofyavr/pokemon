@@ -3,9 +3,7 @@ import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { CollapseProps } from 'antd';
 import { Collapse,  } from 'antd';
-import { Pokemon } from './getPokemons'
-
-const pokemon = ['clefairy', 'pikachu', 'ditto', 'bulbasaur', 'bulbasaur']
+import PokemonList from './pokemonList';
 
 const text = `
   A dog is a type of domesticated animal.
@@ -19,9 +17,7 @@ const getItems: (panelStyle: CSSProperties) => CollapseProps['items'] = (panelSt
     label: <span className='YellowTextStyle' >My Pokemons</span>,
     children: 
             <div>
-                {pokemon.map((poke, index) => (
-                <Pokemon key={index} name={poke} pollingInterval={1} />
-                ))}
+                <PokemonList/>
             </div>,
     style: panelStyle,
   },

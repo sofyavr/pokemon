@@ -22,8 +22,6 @@ export const Pokemon = ({
 
     const moneyPerSecond = data ? calculateMoneyPerSecond(data.weight) : 0;
 
-
-
   return (
     <>
       {error ? (

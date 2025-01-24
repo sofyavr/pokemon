@@ -11,22 +11,7 @@ export const itemApi = createApi({
     getItemByName: builder.query({
       query: (name) => `item/${name}`,
     }),
-    getGreatBall: builder.query({
-      query: () => `item/great-ball`,
-    }), 
-    getDuskBall: builder.query({
-      query: () => `item/dusk-ball`,
-    }), 
-    getNetBall: builder.query({
-      query: () => `item/net-ball`,
-    }), 
-    getAntidote: builder.query({
-      query: () => `item/antidote`,
-    }), 
-    getIceHeal: builder.query({
-      query: () => `item/ice-heal`,
-    }), 
 }),
 })
 
-export const { useGetAllItemsQuery, useGetItemByNameQuery, useGetDuskBallQuery, useGetNetBallQuery, useGetAntidoteQuery, useGetIceHealQuery,  } = itemApi
+export const { useGetAllItemsQuery, useGetItemByNameQuery,  } = itemApi

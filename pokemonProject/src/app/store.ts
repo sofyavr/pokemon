@@ -2,10 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from '../features/counter/counterSlice'
 import { pokemonApi } from '../services/pokemon'
 import { itemApi } from '../services/allItems'
+import pokemonReducer from '../features/pokemonsSlice'
+import moneyReducer from '../features/moneySlice';
 
 export const store = configureStore({
   reducer: {
+    pokemons: pokemonReducer,
     counter: counterReducer,
+    money: moneyReducer,
     [pokemonApi.reducerPath]: pokemonApi.reducer,
     [itemApi.reducerPath]: itemApi.reducer,
   },
